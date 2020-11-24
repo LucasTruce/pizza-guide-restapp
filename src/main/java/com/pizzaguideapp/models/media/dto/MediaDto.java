@@ -1,6 +1,5 @@
 package com.pizzaguideapp.models.media.dto;
 
-import com.pizzaguideapp.models.recipes.dto.RecipeRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

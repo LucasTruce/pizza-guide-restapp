@@ -2,7 +2,6 @@ package com.pizzaguideapp.models.recipes.dto;
 
 import com.pizzaguideapp.models.media.dto.MediaConverter;
 import com.pizzaguideapp.models.recipes.Recipe;
-import com.pizzaguideapp.models.steps.dto.StepsConverter;
 
 import java.util.List;
 import java.util.stream.Collectors;

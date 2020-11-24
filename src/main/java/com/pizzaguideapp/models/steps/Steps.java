@@ -2,7 +2,10 @@ package com.pizzaguideapp.models.steps;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pizzaguideapp.models.recipes.Recipe;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Time;

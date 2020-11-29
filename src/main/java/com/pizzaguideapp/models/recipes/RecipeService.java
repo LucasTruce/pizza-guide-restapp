@@ -6,9 +6,11 @@ import com.pizzaguideapp.models.recipes.dto.RecipeUpdateDto;
 import com.pizzaguideapp.models.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,8 +32,15 @@ public class RecipeService {
         return recipeConverter.map(recipeRepository.save(recipe));
     }
 
-    public List<RecipeRequestDto> getRecipes() {
-        return recipeConverter.map(recipeRepository.findAll());
+    public Page<RecipeRequestDto> getRecipes(int pageNumber, int pageSize, String orderBy, String direction) {
+        Sort.Direction tempDirection;
+        if(direction.equals("ASC"))
+            tempDirection = Sort.Direction.ASC;
+        else
+            tempDirection = Sort.Direction.DESC;
+        Page<Recipe> recipes = recipeRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(tempDirection, orderBy)));
+
+        return recipes.map(recipeConverter::map);
     }
 
     public Optional<Recipe> findById(Long id){

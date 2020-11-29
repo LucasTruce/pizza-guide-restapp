@@ -1,7 +1,9 @@
 package com.pizzaguideapp.models.recipes.dto;
 
+import com.pizzaguideapp.models.components.dto.ComponentConverter;
 import com.pizzaguideapp.models.media.dto.MediaConverter;
 import com.pizzaguideapp.models.recipes.Recipe;
+import com.pizzaguideapp.models.reviews.dto.ReviewConverter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,11 +12,16 @@ public class RecipeConverter {
 
     public RecipeRequestDto map(Recipe recipe) {
         MediaConverter mediaConverter = new MediaConverter();
+        ReviewConverter reviewConverter = new ReviewConverter();
+        ComponentConverter componentConverter = new ComponentConverter();
         return new RecipeRequestDto(
                 recipe.getId(),
                 recipe.getName(),
                 recipe.getDescription(),
-                mediaConverter.map(recipe.getMedia())
+                mediaConverter.map(recipe.getMediaList()),
+                reviewConverter.map(recipe.getReviewList()),
+                componentConverter.map(recipe.getComponentList())
+
         );
     }
 

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class EntityExceptionHandler {
+public class CustomExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<EntityErrorResponse> EntityNotFound(EntityNotFoundException ex) {
         EntityErrorResponse postErrorRes = EntityErrorResponse.builder()

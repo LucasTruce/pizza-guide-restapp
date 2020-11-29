@@ -5,3 +5,7 @@ insert into privilege(id, name) values (1, 'can_read'), (2, 'can_update'), (3, '
 insert into roles_privileges(role_id, privilege_id) values (1, 1), (1,2), (1,3), (1,4), (2,1), (2,2), (2, 3), (2, 4);
 insert into recipes(id, description, name, user_id) values ('1', 'Opis przepisu', 'Przepis1', 1);
 insert into steps(id, description, name, temperature, time, recipe_id) values ('1', 'Opis', 'Krok 1', 0.4, '05:30:30', 1);
+insert into reviews(id, score, description, user_id, recipe_id) values('1', '5', 'Opis przepisu 1', 1, 1);
+insert into ingredients(id, name) values ('1', 'Kurczak'), ('2', 'Pomidor'), ('3', 'Kukurydza'), ('4', 'Boczek');
+insert into components(id, amount, ingredient_id, recipe_id) values ('1', 2, 1,1), ('2', 1, 4, 1);
+insert into media(id, link, name, recipe_id) values ('1', 'https://res.cloudinary.com/verdoux/image/upload/v1606609101/p1_xnkcxw.jpg', 'Zdjecie', 1);

@@ -25,6 +25,8 @@ public class StepsController {
         return new ResponseEntity<>(stepsService.getSteps(), HttpStatus.OK);
     }
 
+
+    //change to save as list
     @PostMapping("recipes/{id}/steps")
     public ResponseEntity<?> saveStep(@PathVariable Long id,  @RequestBody StepsDto stepsDto){
         Recipe recipe = recipeService.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found recipe!"));

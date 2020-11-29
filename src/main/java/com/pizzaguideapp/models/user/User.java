@@ -2,6 +2,7 @@ package com.pizzaguideapp.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.pizzaguideapp.models.recipes.Recipe;
+import com.pizzaguideapp.models.reviews.Review;
 import com.pizzaguideapp.models.role.Role;
 import lombok.Getter;
 import lombok.Setter;
@@ -69,6 +70,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<Recipe> recipeList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private List<Review> reviewList;
 
     //Methods
     @Override

@@ -35,4 +35,10 @@ public class StepsConverter {
                 .map(this::map)
                 .collect(Collectors.toList());
     }
+
+    public List<Steps> map2(List<StepsDto> entityObjects){
+        return entityObjects.stream()
+                .map(this::map)
+                .collect(Collectors.toList());
+    }
 }

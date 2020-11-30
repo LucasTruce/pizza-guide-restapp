@@ -30,7 +30,7 @@ public class RecipeController {
     }
 
     @PostMapping
-    public ResponseEntity<RecipeRequestDto> saveRecipe(@Valid @RequestBody RecipeRequestDto recipeRequestDto, Principal principal){
+    public ResponseEntity<RecipeRequestDto> saveRecipe(@RequestBody @Valid RecipeRequestDto recipeRequestDto, Principal principal){
         User user = userService.findUserByLogin(principal.getName()).orElseThrow(() -> new EntityNotFoundException("User not logged!"));
         return new ResponseEntity<>(recipeService.saveRecipe(recipeRequestDto, user), HttpStatus.OK);
     }

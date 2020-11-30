@@ -25,7 +25,7 @@ public class Component {
     private int amount;
 
     @ManyToOne
-    @JoinColumn(name = "ingredient_id")
+    @JoinColumn(name = "ingredient_id", nullable = false)
     private Ingredient ingredient;
 
     @ManyToOne

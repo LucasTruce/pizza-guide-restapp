@@ -30,10 +30,10 @@ public class Recipe {
     @Column(name = "id")
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Can't be blank!")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "Can't be blank!")
     private String description;
 
     @ManyToOne

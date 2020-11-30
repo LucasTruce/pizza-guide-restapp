@@ -4,9 +4,10 @@ import com.pizzaguideapp.models.ingredients.dto.IngredientDto;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+
 @Data
 @RequiredArgsConstructor
 public class ComponentDto {
     private final int amount;
-    private final IngredientDto ingredientDto;
+    private final IngredientDto ingredients;
 }

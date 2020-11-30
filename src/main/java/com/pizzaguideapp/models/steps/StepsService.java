@@ -22,14 +22,15 @@ public class StepsService {
         this.stepsConverter = new StepsConverter();
     }
 
-    public List<StepsDto> getSteps() {
-        return stepsConverter.map(stepsRepository.findAll());
+    public List<StepsDto> getStepsForRecipe(Long recipeId) {
+        return stepsConverter.map(stepsRepository.findAllByRecipeId(recipeId));
     }
 
-    public StepsDto saveStep(StepsDto stepsDto, Recipe recipe){
-        Steps step = stepsConverter.map(stepsDto);
-        step.setRecipe(recipe);
-        return stepsConverter.map(stepsRepository.save(step));
+    public List<StepsDto> saveStep(List<StepsDto> stepsDtos, Recipe recipe){
+
+        List<Steps> steps = stepsConverter.map2(stepsDtos);
+        steps.forEach(s -> s.setRecipe(recipe));
+        return stepsConverter.map(stepsRepository.saveAll(steps));
     }
 
 

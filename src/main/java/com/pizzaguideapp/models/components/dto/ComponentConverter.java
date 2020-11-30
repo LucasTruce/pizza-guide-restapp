@@ -18,13 +18,21 @@ public class ComponentConverter {
 
     public Component map(ComponentDto componentDto) {
         Component component = new Component();
+        IngredientConverter ingredientConverter = new IngredientConverter();
         component.setAmount(componentDto.getAmount());
+        component.setIngredient(ingredientConverter.map(componentDto.getIngredients()));
         return component;
     }
 
 
     public List<ComponentDto> map(List<Component> entityObjects){
         return entityObjects.stream()
+                .map(this::map)
+                .collect(Collectors.toList());
+    }
+
+    public List<Component> mapDtos(List<ComponentDto> componentDtos){
+        return componentDtos.stream()
                 .map(this::map)
                 .collect(Collectors.toList());
     }

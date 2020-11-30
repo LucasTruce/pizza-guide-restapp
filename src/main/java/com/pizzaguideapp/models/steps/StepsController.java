@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class StepsController {
@@ -20,16 +23,16 @@ public class StepsController {
     private final StepsService stepsService;
     private final RecipeService recipeService;
 
-    @GetMapping("steps")
-    public ResponseEntity<?> getSteps() {
-        return new ResponseEntity<>(stepsService.getSteps(), HttpStatus.OK);
+    @GetMapping("/recipes/{id}/steps")
+    public ResponseEntity<?> getStepsForRecipe(@PathVariable(name = "id") Long id) {
+        return new ResponseEntity<>(stepsService.getStepsForRecipe(id), HttpStatus.OK);
     }
 
 
     //change to save as list
     @PostMapping("recipes/{id}/steps")
-    public ResponseEntity<?> saveStep(@PathVariable Long id,  @RequestBody StepsDto stepsDto){
+    public ResponseEntity<List<StepsDto>> saveStep(@PathVariable Long id, @RequestBody @Valid List<StepsDto> stepsDtos){
         Recipe recipe = recipeService.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found recipe!"));
-        return new ResponseEntity<>(stepsService.saveStep(stepsDto, recipe), HttpStatus.OK);
+        return new ResponseEntity<>(stepsService.saveStep(stepsDtos, recipe), HttpStatus.OK);
     }
 }

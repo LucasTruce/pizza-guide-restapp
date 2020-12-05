@@ -1,6 +1,7 @@
 package com.pizzaguideapp.models.recipes;
 
 import com.pizzaguideapp.exception.EntityNotFoundException;
+import com.pizzaguideapp.models.recipes.dto.RecipeIdentificationDto;
 import com.pizzaguideapp.models.recipes.dto.RecipeRequestDto;
 import com.pizzaguideapp.models.user.User;
 import com.pizzaguideapp.models.user.UserService;
@@ -27,6 +28,11 @@ public class RecipeController {
                                                              @RequestParam(defaultValue = "id") String orderBy,
                                                              @RequestParam(defaultValue = "ASC") String direction){
         return new ResponseEntity<>(recipeService.getRecipes(pageNumber, pageSize, orderBy, direction), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RecipeIdentificationDto> getRecipeById(@PathVariable(name = "id") Long id){
+        return new ResponseEntity<>(recipeService.getRecipeById(id), HttpStatus.OK);
     }
 
     @PostMapping

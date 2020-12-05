@@ -1,6 +1,8 @@
 package com.pizzaguideapp.models.recipes;
 
+import com.pizzaguideapp.exception.EntityNotFoundException;
 import com.pizzaguideapp.models.recipes.dto.RecipeConverter;
+import com.pizzaguideapp.models.recipes.dto.RecipeIdentificationDto;
 import com.pizzaguideapp.models.recipes.dto.RecipeRequestDto;
 import com.pizzaguideapp.models.recipes.dto.RecipeUpdateDto;
 import com.pizzaguideapp.models.user.User;
@@ -45,6 +47,12 @@ public class RecipeService {
 
     public Optional<Recipe> findById(Long id){
         return recipeRepository.findById(id);
+    }
+
+    public RecipeIdentificationDto getRecipeById(Long id){
+        Recipe recipe = recipeRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Recipe not found!"));
+
+        return recipeConverter.mapIdentification(recipe);
     }
 
     public RecipeRequestDto updateRecipe(RecipeUpdateDto recipeUpdateDto, Recipe recipe) {

@@ -4,6 +4,8 @@ import com.pizzaguideapp.models.components.dto.ComponentConverter;
 import com.pizzaguideapp.models.media.dto.MediaConverter;
 import com.pizzaguideapp.models.recipes.Recipe;
 import com.pizzaguideapp.models.reviews.dto.ReviewConverter;
+import com.pizzaguideapp.models.steps.dto.StepsConverter;
+import com.pizzaguideapp.models.user.dto.UserConverter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,16 +14,12 @@ public class RecipeConverter {
 
     public RecipeRequestDto map(Recipe recipe) {
         MediaConverter mediaConverter = new MediaConverter();
-        ReviewConverter reviewConverter = new ReviewConverter();
-        ComponentConverter componentConverter = new ComponentConverter();
+
         return new RecipeRequestDto(
                 recipe.getId(),
                 recipe.getName(),
                 recipe.getDescription(),
-                mediaConverter.map(recipe.getMediaList()),
-                reviewConverter.map(recipe.getReviewList()),
-                componentConverter.map(recipe.getComponentList())
-
+                mediaConverter.map(recipe.getMediaList())
         );
     }
 
@@ -31,6 +29,23 @@ public class RecipeConverter {
         recipe.setName(recipeRequestDto.getName());
         recipe.setDescription(recipeRequestDto.getDescription());
         return recipe;
+    }
+
+    public RecipeIdentificationDto mapIdentification(Recipe recipe){
+        UserConverter userConverter = new UserConverter();
+        MediaConverter mediaConverter = new MediaConverter();
+        StepsConverter stepsConverter = new StepsConverter();
+        ReviewConverter reviewConverter = new ReviewConverter();
+        ComponentConverter componentConverter = new ComponentConverter();
+        return new RecipeIdentificationDto(
+                recipe.getName(),
+                recipe.getDescription(),
+                userConverter.map(recipe.getUser()),
+                mediaConverter.map(recipe.getMediaList()),
+                stepsConverter.map(recipe.getStepsList()),
+                componentConverter.map(recipe.getComponentList()),
+                reviewConverter.map(recipe.getReviewList())
+        );
     }
 
 

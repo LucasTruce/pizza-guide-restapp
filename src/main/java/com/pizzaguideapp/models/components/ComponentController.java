@@ -25,7 +25,8 @@ public class ComponentController {
     }
 
     @PostMapping("/recipes/{id}/components")
-    public ResponseEntity<List<ComponentDto>> saveComponents(@PathVariable(name = "id") Long id, @RequestBody @Valid List<ComponentDto> componentDtos){
+    public ResponseEntity<List<ComponentDto>> saveComponents(@PathVariable(name = "id") Long id,
+                                                             @RequestBody @Valid List<ComponentDto> componentDtos){
         return new ResponseEntity<>(componentService.saveComponents(componentDtos, id), HttpStatus.OK);
     }
 

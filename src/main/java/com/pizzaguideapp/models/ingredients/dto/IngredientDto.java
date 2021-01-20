@@ -1,15 +1,15 @@
 package com.pizzaguideapp.models.ingredients.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
-@Data
-@RequiredArgsConstructor
+@Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class IngredientDto {
 

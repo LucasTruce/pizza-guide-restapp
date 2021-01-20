@@ -34,7 +34,7 @@ public class RecipeService {
         return recipeConverter.map(recipeRepository.save(recipe));
     }
 
-    public Page<RecipeRequestDto> getRecipes(int pageNumber, int pageSize, String orderBy, String direction) {
+    public Page<RecipeIdentificationDto> getRecipes(int pageNumber, int pageSize, String orderBy, String direction) {
         Sort.Direction tempDirection;
         if(direction.equals("ASC"))
             tempDirection = Sort.Direction.ASC;
@@ -42,7 +42,7 @@ public class RecipeService {
             tempDirection = Sort.Direction.DESC;
         Page<Recipe> recipes = recipeRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(tempDirection, orderBy)));
 
-        return recipes.map(recipeConverter::map);
+        return recipes.map(recipeConverter::mapIdentification);
     }
 
     public Optional<Recipe> findById(Long id){

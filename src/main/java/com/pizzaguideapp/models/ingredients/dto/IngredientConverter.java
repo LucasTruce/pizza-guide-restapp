@@ -1,14 +1,12 @@
 package com.pizzaguideapp.models.ingredients.dto;
 
 import com.pizzaguideapp.models.ingredients.Ingredient;
-import com.pizzaguideapp.models.recipes.dto.RecipeConverter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class IngredientConverter {
     public IngredientDto map(Ingredient ingredient) {
-        RecipeConverter recipeConverter = new RecipeConverter();
 
         return new IngredientDto(
                 ingredient.getName()

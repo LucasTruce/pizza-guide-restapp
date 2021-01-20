@@ -1,25 +1,22 @@
 package com.pizzaguideapp.models.steps.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import java.sql.Time;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@RequiredArgsConstructor
 public class StepsDto {
-    private Long id;
+    private final Long id;
 
     @NotBlank(message = "Can't be blank!")
-    private String name;
+    private final String name;
 
     @NotBlank(message = "Can't be blank!")
-    private String description;
+    private final String description;
 
-    private Time time;
+    private final Time time;
 
-    private float temperature;
 }

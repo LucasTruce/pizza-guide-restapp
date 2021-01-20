@@ -23,7 +23,7 @@ public class RecipeController {
     private final UserService userService;
 
     @GetMapping
-    public ResponseEntity<Page<RecipeRequestDto>> getRecipes(@RequestParam(defaultValue = "0") int pageNumber,
+    public ResponseEntity<Page<RecipeIdentificationDto>> getRecipes(@RequestParam(defaultValue = "0") int pageNumber,
                                                              @RequestParam(defaultValue = "5") int pageSize,
                                                              @RequestParam(defaultValue = "id") String orderBy,
                                                              @RequestParam(defaultValue = "ASC") String direction){

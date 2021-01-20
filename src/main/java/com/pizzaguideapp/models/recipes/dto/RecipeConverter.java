@@ -38,6 +38,7 @@ public class RecipeConverter {
         ReviewConverter reviewConverter = new ReviewConverter();
         ComponentConverter componentConverter = new ComponentConverter();
         return new RecipeIdentificationDto(
+                recipe.getId(),
                 recipe.getName(),
                 recipe.getDescription(),
                 userConverter.map(recipe.getUser()),

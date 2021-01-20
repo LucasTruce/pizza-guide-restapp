@@ -1,11 +1,12 @@
 package com.pizzaguideapp.models.reviews.dto;
 
-import lombok.Data;
+import com.pizzaguideapp.models.user.dto.UserIdentificationDto;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 
-@Data
+@Getter
 @RequiredArgsConstructor
 public class ReviewRequestDto {
 
@@ -13,4 +14,6 @@ public class ReviewRequestDto {
 
     @NotBlank
     private final String description;
+
+    private final UserIdentificationDto user;
 }

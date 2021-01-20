@@ -2,14 +2,16 @@ package com.pizzaguideapp.models.media;
 
 import com.pizzaguideapp.models.recipes.Recipe;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "media", schema = "pizzadb")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Media {

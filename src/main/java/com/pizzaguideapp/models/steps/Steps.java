@@ -32,8 +32,6 @@ public class Steps {
 
     private Time time;
 
-    private float temperature;
-
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;

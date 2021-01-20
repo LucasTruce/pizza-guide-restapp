@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @RequiredArgsConstructor
 public class RecipeIdentificationDto {
+    private final Long id;
     private final String name;
     private final String description;
     private final UserIdentificationDto user;

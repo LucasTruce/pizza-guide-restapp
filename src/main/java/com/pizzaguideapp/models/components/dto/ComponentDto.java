@@ -1,13 +1,16 @@
 package com.pizzaguideapp.models.components.dto;
 
 import com.pizzaguideapp.models.ingredients.dto.IngredientDto;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
-@Data
-@RequiredArgsConstructor
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ComponentDto {
-    private final int amount;
-    private final IngredientDto ingredients;
+    private int amount;
+    private IngredientDto ingredients;
+
 }

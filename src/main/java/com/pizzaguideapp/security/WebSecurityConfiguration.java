@@ -73,6 +73,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(HttpMethod.POST, "/ingredients").hasAnyRole("ADMIN", "USER") //save ingredient
                     .antMatchers(HttpMethod.GET, "/recipes/{id}/components").hasAnyRole("ADMIN", "USER") //get all components for recipe
                     .antMatchers(HttpMethod.POST, "/recipes/{id}/components").hasAnyRole("ADMIN", "USER")
+                    .antMatchers(HttpMethod.GET, "/chats").hasAnyRole("ADMIN", "USER")
+                    .antMatchers(HttpMethod.POST, "/chats").hasAnyRole("ADMIN", "USER")
+                    .antMatchers(HttpMethod.GET, "/chats/{id}/messages").hasAnyRole("ADMIN", "USER")
+                    .antMatchers(HttpMethod.POST, "/chats/{id}/messages").hasAnyRole("ADMIN", "USER")
                     .anyRequest().authenticated();
 
             http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

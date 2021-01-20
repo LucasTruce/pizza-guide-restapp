@@ -15,8 +15,7 @@ public class StepsConverter {
                 steps.getId(),
                 steps.getName(),
                 steps.getDescription(),
-                steps.getTime(),
-                steps.getTemperature()
+                steps.getTime()
         );
     }
 
@@ -26,7 +25,6 @@ public class StepsConverter {
         steps.setName(stepsDto.getName());
         steps.setDescription(stepsDto.getDescription());
         steps.setTime(stepsDto.getTime());
-        steps.setTemperature(stepsDto.getTemperature());
         return steps;
     }
 

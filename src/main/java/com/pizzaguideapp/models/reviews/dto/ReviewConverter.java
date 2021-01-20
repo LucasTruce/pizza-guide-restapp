@@ -1,7 +1,7 @@
 package com.pizzaguideapp.models.reviews.dto;
 
-import com.pizzaguideapp.models.media.dto.MediaConverter;
 import com.pizzaguideapp.models.reviews.Review;
+import com.pizzaguideapp.models.user.dto.UserConverter;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 public class ReviewConverter {
 
     public ReviewRequestDto map(Review review) {
-        MediaConverter mediaConverter = new MediaConverter();
+        UserConverter userConverter = new UserConverter();
         return new ReviewRequestDto(
                 review.getScore(),
-                review.getDescription()
+                review.getDescription(),
+                userConverter.map(review.getUser())
         );
     }
 
